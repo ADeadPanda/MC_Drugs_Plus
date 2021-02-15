@@ -1,0 +1,8 @@
+name: Drugs
+version: 1.5
+main: dead.panda.Drugs
+api-version: 1.16
+authors: [ ADeadPanda ]
+description: a simple drugs plugin
+depend:
+  - Vault
