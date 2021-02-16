@@ -1,4 +1,4 @@
-package dead.panda;
+package dead.panda.events;
 
 import org.bukkit.Material;
 import org.bukkit.block.data.Ageable;

@@ -1,5 +1,7 @@
-package dead.panda;
+package dead.panda.events;
 
+import dead.panda.Drugs;
+import dead.panda.events.Util;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

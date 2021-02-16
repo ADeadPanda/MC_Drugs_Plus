@@ -1,5 +1,6 @@
 package dead.panda;
 
+import dead.panda.events.Util;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -29,7 +30,6 @@ public class ItemManager {
         ItemStack item = new ItemStack(Material.GREEN_DYE, 1);
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(Util.chat("&a&lWeed"));
-        meta.setUnbreakable(true);
         item.setItemMeta(meta);
         weed = item;
     }
