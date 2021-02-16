@@ -1,4 +1,4 @@
-package dead.panda;
+package dead.panda.events;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -10,23 +10,23 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import static dead.panda.ItemManager.heroin;
+import static dead.panda.ItemManager.meth;
 
-public class HeroinEvent implements Listener {
-
+public class MethEvent implements Listener {
     @EventHandler
     public static void onRightClick(PlayerInteractEvent e) {
         Player player = e.getPlayer();
         if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
             if (e.getItem() != null) {
-                if (e.getItem().getItemMeta().equals(heroin.getItemMeta())) {
+                if (e.getItem().getItemMeta().equals(meth.getItemMeta())) {
                     if (player.isSneaking()) {
-                        player.addPotionEffect(new PotionEffect(PotionEffectType.HARM, 1, 1));
-                        if (heroin.getAmount() >= 1) {
-                            player.getInventory().removeItem(heroin).remove(-1, heroin);
+                        player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 20 * 120, 3));
+                        player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 20 * 120, 2));
+                        player.damage(15);
+                        if (meth.getAmount() >= 1) {
+                            player.getInventory().removeItem(meth).remove(-1, meth);
                         }
                     }
-                    e.setCancelled(true);
                 }
             }
         }
@@ -34,11 +34,10 @@ public class HeroinEvent implements Listener {
 
     @EventHandler
     public void onBreak(BlockBreakEvent e) {
-
-        if (e.getBlock().getType() == Material.POPPY) {
-            e.getBlock().getLocation().getWorld().dropItem(e.getBlock().getLocation(), heroin);
+        if (e.getBlock().getType() == Material.BLUE_ICE) {
+            e.getBlock().getLocation().getWorld().dropItem(e.getBlock().getLocation(), meth);
             e.setDropItems(false);
         }
     }
-
 }
+

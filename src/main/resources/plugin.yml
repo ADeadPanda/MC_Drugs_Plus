@@ -6,3 +6,6 @@ authors: [ ADeadPanda ]
 description: a simple drugs plugin
 depend:
   - Vault
+
+commands:
+  npccreate:
