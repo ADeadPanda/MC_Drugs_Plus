@@ -52,7 +52,7 @@ public final class Drugs extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new HeroinEvent(), this);
         this.getServer().getPluginManager().registerEvents(new AcidEvent(), this);
         this.getServer().getPluginManager().registerEvents(new MethEvent(), this);
-        this.getServer().getPluginManager().registerEvents(new SellEvent(this), this);
+       /* this.getServer().getPluginManager().registerEvents(new SellEvent(this), this);*/
         this.getCommand("npccreate").setExecutor(new NpcCommand());
         cocaineRecipe();
         acidRecipe();

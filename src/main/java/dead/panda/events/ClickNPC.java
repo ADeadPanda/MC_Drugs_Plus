@@ -70,22 +70,23 @@ public class ClickNPC implements Listener {
                 }
             }
         }
-        player.sendMessage(Util.chat("&6-----------------------------------------------------"));
-        player.sendMessage(Util.chat("&cSold &b" + amountofweedFound + " &cWeed"));
+        player.sendMessage(Util.chat("&8&l--------- &a&lDrugs Sold &8&l---------"));
+        player.sendMessage(Util.chat("&7Sold &a&l" + amountofweedFound + " &7Weed"));
         plugin.econ.depositPlayer(player, amountofweedFound * 2);
-        player.sendMessage(Util.chat("&cSold &b" + amountofacidFound + " &cAcid"));
+        player.sendMessage(Util.chat("&7Sold &a&l" + amountofacidFound + " &7Acid"));
         plugin.econ.depositPlayer(player, amountofacidFound * 4);
-        player.sendMessage(Util.chat("&cSold &b" + amountofmethFound + " &cMeth"));
+        player.sendMessage(Util.chat("&7Sold &a&l" + amountofmethFound + " &7Meth"));
         plugin.econ.depositPlayer(player, amountofmethFound * 8);
-        player.sendMessage(Util.chat("&cSold &b" + amountofcocaineFound + " &cCocaine"));
+        player.sendMessage(Util.chat("&7Sold &a&l" + amountofcocaineFound + " &7Cocaine"));
         plugin.econ.depositPlayer(player, amountofcocaineFound * 10);
-        player.sendMessage(Util.chat("&cSold &b" + amountofmushroomFound + " &cShrooms"));
+        player.sendMessage(Util.chat("&7Sold &a&l" + amountofmushroomFound + " &7Shrooms"));
         plugin.econ.depositPlayer(player, amountofmushroomFound * 15);
-        player.sendMessage(Util.chat("&cSold &b" + amountofheroinFound + " &cHeroin"));
+        player.sendMessage(Util.chat("&7Sold &a&l" + amountofheroinFound + " &7Heroin"));
         plugin.econ.depositPlayer(player, amountofheroinFound * 8);
         int total = amountofacidFound * 4 + amountofcocaineFound * 10 + amountofheroinFound * 8 + amountofmushroomFound * 15 + amountofweedFound * 2 + amountofmethFound * 8;
-        player.sendMessage(Util.chat("&5Total Profit &6$" + total ));
-        player.sendMessage(Util.chat("&6-----------------------------------------------------"));
+        player.sendMessage(Util.chat(""));
+        player.sendMessage(Util.chat("&7&lTotal Profit: &6&l$" + total ));
+        player.sendMessage(Util.chat("&8&l-----------------------------"));
     }
 }
 

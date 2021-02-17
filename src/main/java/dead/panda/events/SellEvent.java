@@ -1,3 +1,4 @@
+/*
 package dead.panda.events;
 
 import dead.panda.Drugs;
@@ -248,3 +249,4 @@ public class SellEvent implements Listener {
 
     }
 }
+*/
