@@ -52,8 +52,9 @@ public final class Drugs extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new HeroinEvent(), this);
         this.getServer().getPluginManager().registerEvents(new AcidEvent(), this);
         this.getServer().getPluginManager().registerEvents(new MethEvent(), this);
-       /* this.getServer().getPluginManager().registerEvents(new SellEvent(this), this);*/
+        this.getServer().getPluginManager().registerEvents(new NPCWorldChangeCommand(), this);
         this.getCommand("npccreate").setExecutor(new NpcCommand());
+        this.getCommand("npcreload").setExecutor(new NPCWorldChangeCommand());
         cocaineRecipe();
         acidRecipe();
 
@@ -79,9 +80,9 @@ public final class Drugs extends JavaPlugin {
         for (Player player : Bukkit.getOnlinePlayers()) {
             PacketReader reader = new PacketReader();
             reader.uninject(player);
-            for (EntityPlayer npc : NpcCreator.getNPCs()) {
+/*            for (EntityPlayer npc : NpcCreator.getNPCs()) {
                 NpcCreator.removeNPC(player, npc);
-            }
+            }*/
 
         }
     }

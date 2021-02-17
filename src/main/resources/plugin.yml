@@ -9,3 +9,4 @@ depend:
 
 commands:
   npccreate:
+  npcreload:
