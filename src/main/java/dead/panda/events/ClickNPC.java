@@ -72,18 +72,18 @@ public class ClickNPC implements Listener {
         }
         player.sendMessage(Util.chat("&6-----------------------------------------------------"));
         player.sendMessage(Util.chat("&cSold &b" + amountofweedFound + " &cWeed"));
-        plugin.econ.depositPlayer(player, amountofweedFound * 100);
+        plugin.econ.depositPlayer(player, amountofweedFound * 2);
         player.sendMessage(Util.chat("&cSold &b" + amountofacidFound + " &cAcid"));
-        plugin.econ.depositPlayer(player, amountofacidFound * 100);
+        plugin.econ.depositPlayer(player, amountofacidFound * 4);
         player.sendMessage(Util.chat("&cSold &b" + amountofmethFound + " &cMeth"));
-        plugin.econ.depositPlayer(player, amountofmethFound * 100);
+        plugin.econ.depositPlayer(player, amountofmethFound * 8);
         player.sendMessage(Util.chat("&cSold &b" + amountofcocaineFound + " &cCocaine"));
-        plugin.econ.depositPlayer(player, amountofcocaineFound * 100);
+        plugin.econ.depositPlayer(player, amountofcocaineFound * 10);
         player.sendMessage(Util.chat("&cSold &b" + amountofmushroomFound + " &cShrooms"));
-        plugin.econ.depositPlayer(player, amountofmushroomFound * 100);
+        plugin.econ.depositPlayer(player, amountofmushroomFound * 15);
         player.sendMessage(Util.chat("&cSold &b" + amountofheroinFound + " &cHeroin"));
-        plugin.econ.depositPlayer(player, amountofheroinFound * 100);
-        int total = amountofacidFound * 100 + amountofcocaineFound * 100 + amountofheroinFound * 100 + amountofmushroomFound * 100 + amountofweedFound * 100 + amountofmethFound * 100;
+        plugin.econ.depositPlayer(player, amountofheroinFound * 8);
+        int total = amountofacidFound * 4 + amountofcocaineFound * 10 + amountofheroinFound * 8 + amountofmushroomFound * 15 + amountofweedFound * 2 + amountofmethFound * 8;
         player.sendMessage(Util.chat("&5Total Profit &6$" + total ));
         player.sendMessage(Util.chat("&6-----------------------------------------------------"));
     }

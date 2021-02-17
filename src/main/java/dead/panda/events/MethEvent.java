@@ -34,7 +34,7 @@ public class MethEvent implements Listener {
 
     @EventHandler
     public void onBreak(BlockBreakEvent e) {
-        if (e.getBlock().getType() == Material.BLUE_ICE) {
+        if (e.getBlock().getType() == Material.ICE) {
             e.getBlock().getLocation().getWorld().dropItem(e.getBlock().getLocation(), meth);
             e.setDropItems(false);
         }

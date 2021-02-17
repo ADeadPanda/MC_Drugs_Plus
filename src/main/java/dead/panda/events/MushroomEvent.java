@@ -39,6 +39,10 @@ public class MushroomEvent implements Listener {
             e.getBlock().getLocation().getWorld().dropItem(e.getBlock().getLocation(), mushroom);
             e.setDropItems(false);
         }
+        if (e.getBlock().getType() == Material.RED_MUSHROOM) {
+            e.getBlock().getLocation().getWorld().dropItem(e.getBlock().getLocation(), mushroom);
+            e.setDropItems(false);
+        }
     }
 
 }
