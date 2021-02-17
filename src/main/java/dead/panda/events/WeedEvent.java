@@ -13,7 +13,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import static dead.panda.ItemManager.weed;
-import static dead.panda.ItemManager.weedseed;
+import static dead.panda.ItemManager.weed_seed;
 
 public class WeedEvent implements Listener {
 
@@ -44,7 +44,7 @@ public class WeedEvent implements Listener {
             if (age.getAge() == age.getMaximumAge()) {
                 if (e.getBlock().getType() == Material.WHEAT) {
                     e.getBlock().getLocation().getWorld().dropItem(e.getBlock().getLocation(), weed);
-                    e.getBlock().getLocation().getWorld().dropItem(e.getBlock().getLocation(), weedseed);
+                    e.getBlock().getLocation().getWorld().dropItem(e.getBlock().getLocation(), weed_seed);
                     e.setDropItems(false);
                 }
             }

@@ -21,7 +21,6 @@ public class NpcCommand implements Listener, CommandExecutor {
             if (player.hasPermission("Drugs.npc.create")) {
                 if (args.length == 0) {
                     NpcCreator.createNPC(player, player.getName());
-                    NpcCreator.createNPC(player, player.getName());
                     player.sendMessage(Util.chat("&bNPC Created"));
                 }
                 NpcCreator.createNPC(player, args[0]);

@@ -4,58 +4,94 @@ import dead.panda.Drugs;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.inventory.ItemStack;
+
+import java.util.ArrayList;
 
 import static dead.panda.ItemManager.*;
 
 public class ClickNPC implements Listener {
 
-    private Drugs plugin;
+    private final Drugs plugin;
 
     public ClickNPC(Drugs plugin) {
         this.plugin = plugin;
     }
 
     @EventHandler
-    public void onWeedNpc(RightClickNPC event) {
+    public void onRightClickNPC(RightClickNPC event) {
+        ArrayList<ItemStack> drug = new ArrayList<>();
+        drug.add(weed);
+        drug.add(heroin);
+        drug.add(mushroom);
+        drug.add(meth);
+        drug.add(acid);
+        drug.add(cocaine);
         Player player = event.getPlayer();
-        int amount = 100;
-        if (player.getInventory().getItemInMainHand() == null) return;
-        if (player.getInventory().getItemInMainHand().getItemMeta().equals(weed.getItemMeta())) {
-            if (weed.getAmount() >= 1) {
-                event.getPlayer().getInventory().removeItem(weed).remove(-1, weed);
-                player.sendMessage(Util.chat("&cSold 1 &aWeed &cfor &6 $100"));
-                plugin.econ.depositPlayer(player, amount);
-            }
-        } else if (player.getInventory().getItemInMainHand().getItemMeta().equals(acid.getItemMeta())){
-            if (acid.getAmount() >= 1) {
-                event.getPlayer().getInventory().removeItem(acid).remove(-1, acid);
-                player.sendMessage(Util.chat("&cSold 1 &fAcid &cfor &6 $100"));
-                plugin.econ.depositPlayer(player, amount);
-            }
-        } else if (player.getInventory().getItemInMainHand().getItemMeta().equals(cocaine.getItemMeta())){
-            if (cocaine.getAmount() >= 1) {
-                event.getPlayer().getInventory().removeItem(cocaine).remove(-1, cocaine);
-                player.sendMessage(Util.chat("&cSold 1 &fCocaine &cfor &6 $100"));
-                plugin.econ.depositPlayer(player, amount);
-            }
-        } else if (player.getInventory().getItemInMainHand().getItemMeta().equals(mushroom.getItemMeta())){
-            if (mushroom.getAmount() >= 1) {
-                event.getPlayer().getInventory().removeItem(mushroom).remove(-1, mushroom);
-                player.sendMessage(Util.chat("&cSold 1 &fShrooms &cfor &6 $100"));
-                plugin.econ.depositPlayer(player, amount);
-            }
-        } else if (player.getInventory().getItemInMainHand().getItemMeta().equals(heroin.getItemMeta())){
-            if (heroin.getAmount() >= 1) {
-                event.getPlayer().getInventory().removeItem(heroin).remove(-1, heroin);
-                player.sendMessage(Util.chat("&cSold 1 &fHeroin &cfor &6 $100"));
-                plugin.econ.depositPlayer(player, amount);
-            }
-        } else if (player.getInventory().getItemInMainHand().getItemMeta().equals(meth.getItemMeta())){
-            if (meth.getAmount() >= 1) {
-                event.getPlayer().getInventory().removeItem(meth).remove(-1, meth);
-                player.sendMessage(Util.chat("&cSold 1 &fMeth &cfor &6 $100"));
-                plugin.econ.depositPlayer(player, amount);
+        int amountofweedFound = 0;
+        int amountofacidFound = 0;
+        int amountofheroinFound = 0;
+        int amountofmushroomFound = 0;
+        int amountofmethFound = 0;
+        int amountofcocaineFound = 0;
+
+
+        for (ItemStack drugs : drug) {
+            for (ItemStack item : player.getInventory().getContents()) {
+                if (item != null && item.getType() == drugs.getType() && weed.getType() == item.getType()) {
+                    amountofweedFound += item.getAmount();
+                    drugs.setAmount(amountofweedFound);
+                    event.getPlayer().getInventory().removeItem(drugs).remove(drugs.getAmount());
+                }
+                if (item != null && item.getType() == drugs.getType() && acid.getType() == item.getType()) {
+                    amountofacidFound += item.getAmount();
+                    drugs.setAmount(amountofacidFound);
+                    event.getPlayer().getInventory().removeItem(drugs).remove(drugs.getAmount());
+                }
+                if (item != null && item.getType() == drugs.getType() && heroin.getType() == item.getType()) {
+                    amountofheroinFound += item.getAmount();
+                    drugs.setAmount(amountofheroinFound);
+                    event.getPlayer().getInventory().removeItem(drugs).remove(drugs.getAmount());
+                }
+                if (item != null && item.getType() == drugs.getType() && mushroom.getType() == item.getType()) {
+                    amountofmushroomFound += item.getAmount();
+                    drugs.setAmount(amountofmushroomFound);
+                    event.getPlayer().getInventory().removeItem(drugs).remove(drugs.getAmount());
+                }
+                if (item != null && item.getType() == drugs.getType() && meth.getType() == item.getType()) {
+                    amountofmethFound += item.getAmount();
+                    drugs.setAmount(amountofmethFound);
+                    event.getPlayer().getInventory().removeItem(drugs).remove(drugs.getAmount());
+                }
+                if (item != null && item.getType() == drugs.getType() && cocaine.getType() == item.getType()) {
+                    amountofcocaineFound += item.getAmount();
+                    drugs.setAmount(amountofcocaineFound);
+                    event.getPlayer().getInventory().removeItem(drugs).remove(drugs.getAmount());
+                }
             }
         }
+        player.sendMessage(Util.chat("&6-----------------------------------------------------"));
+        player.sendMessage(Util.chat("&cSold &b" + amountofweedFound + " &cWeed"));
+        plugin.econ.depositPlayer(player, amountofweedFound * 100);
+        player.sendMessage(Util.chat("&cSold &b" + amountofacidFound + " &cAcid"));
+        plugin.econ.depositPlayer(player, amountofacidFound * 100);
+        player.sendMessage(Util.chat("&cSold &b" + amountofmethFound + " &cMeth"));
+        plugin.econ.depositPlayer(player, amountofmethFound * 100);
+        player.sendMessage(Util.chat("&cSold &b" + amountofcocaineFound + " &cCocaine"));
+        plugin.econ.depositPlayer(player, amountofcocaineFound * 100);
+        player.sendMessage(Util.chat("&cSold &b" + amountofmushroomFound + " &cShrooms"));
+        plugin.econ.depositPlayer(player, amountofmushroomFound * 100);
+        player.sendMessage(Util.chat("&cSold &b" + amountofheroinFound + " &cHeroin"));
+        plugin.econ.depositPlayer(player, amountofheroinFound * 100);
+        int total = amountofacidFound * 100 + amountofcocaineFound * 100 + amountofheroinFound * 100 + amountofmushroomFound * 100 + amountofweedFound * 100 + amountofmethFound * 100;
+        player.sendMessage(Util.chat("&5Total Profit &6$" + total ));
+        player.sendMessage(Util.chat("&6-----------------------------------------------------"));
     }
 }
+
+
+
+
+
+
+

@@ -7,6 +7,7 @@ import com.mojang.authlib.properties.Property;
 import dead.panda.events.Util;
 import net.minecraft.server.v1_16_R3.*;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_16_R3.CraftServer;
 import org.bukkit.craftbukkit.v1_16_R3.CraftWorld;
 import org.bukkit.craftbukkit.v1_16_R3.entity.CraftPlayer;
@@ -20,7 +21,7 @@ import java.util.UUID;
 
 public class NpcCreator {
 
-    private static final List<EntityPlayer> NPC = new ArrayList<EntityPlayer>();
+    private static final List<EntityPlayer> NPC = new ArrayList<>();
 
     public static void createNPC(Player player, String skin) {
         MinecraftServer server = ((CraftServer) Bukkit.getServer()).getServer();
@@ -32,7 +33,41 @@ public class NpcCreator {
         gameProfile.getProperties().put("textures", new Property("textures", name[0], name[1]));
         addNPCPacket(npc);
         NPC.add(npc);
+
+        int var = 1;
+        if (Drugs.getData().contains("data")) {
+            var = Drugs.getData().getConfigurationSection("data").getKeys(false).size() + 1;
+        }
+
+        Drugs.getData().set("data." + var + ".x", (int) player.getLocation().getX());
+        Drugs.getData().set("data." + var + ".y", (int) player.getLocation().getY());
+        Drugs.getData().set("data." + var + ".z", (int) player.getLocation().getZ());
+        Drugs.getData().set("data." + var + ".pitch", player.getLocation().getPitch());
+        Drugs.getData().set("data." + var + ".yaw", player.getLocation().getYaw());
+        Drugs.getData().set("data." + var + ".world", player.getLocation().getWorld().getName());
+
+        Drugs.getData().set("data." + var + ".name", skin);
+        Drugs.getData().set("data." + var + ".text", name[0]);
+        Drugs.getData().set("data." + var + ".signature", name[1]);
+        Drugs.saveData();
     }
+
+    public static void loadNPC(Location location, GameProfile profile) {
+
+        MinecraftServer server = ((CraftServer) Bukkit.getServer()).getServer();
+
+        WorldServer world = ((CraftWorld) location.getWorld()).getHandle();
+
+        GameProfile gameProfile = profile;
+
+        EntityPlayer npc = new EntityPlayer(server, world, gameProfile, new PlayerInteractManager(world));
+
+        npc.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
+
+        addNPCPacket(npc);
+        NPC.add(npc);
+    }
+
 
     private static String[] getSkin(Player player, String name) {
         try {
@@ -69,6 +104,11 @@ public class NpcCreator {
         }
     }
 
+    public static void removeNPC(Player player, EntityPlayer npc) {
+        PlayerConnection connection = ((CraftPlayer) player).getHandle().playerConnection;
+        connection.sendPacket(new PacketPlayOutEntityDestroy(npc.getId()));
+    }
+
     public static void addJoinPacket(Player player) {
         for (EntityPlayer npc : NPC) {
             PlayerConnection connection = ((CraftPlayer) player).getHandle().playerConnection;
@@ -78,7 +118,9 @@ public class NpcCreator {
         }
     }
 
+
     public static List<EntityPlayer> getNPCs() {
         return NPC;
     }
+
 }

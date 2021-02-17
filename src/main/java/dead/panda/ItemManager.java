@@ -8,7 +8,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class ItemManager {
 
     public static ItemStack weed;
-    public static ItemStack weedseed;
+    public static ItemStack weed_seed;
     public static ItemStack cocaine;
     public static ItemStack mushroom;
     public static ItemStack heroin;
@@ -39,7 +39,7 @@ public class ItemManager {
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(Util.chat("&a&lWeed Seed"));
         item.setItemMeta(meta);
-        weedseed = item;
+        weed_seed = item;
     }
 
     private static void createCocaine() {
