@@ -53,7 +53,7 @@ public class ItemManager {
     private static void createMushroom() {
         ItemStack item = new ItemStack(Material.WARPED_FUNGUS, 1);
         ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(Util.chat("&f&lShrooms"));
+        meta.setDisplayName(Util.chat("&c&lShrooms"));
         item.setItemMeta(meta);
         mushroom = item;
     }
@@ -61,7 +61,7 @@ public class ItemManager {
     private static void createHeroin() {
         ItemStack item = new ItemStack(Material.ARROW, 1);
         ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(Util.chat("&f&lHeroin"));
+        meta.setDisplayName(Util.chat("&d&lHeroin"));
         item.setItemMeta(meta);
         heroin = item;
     }
@@ -69,7 +69,7 @@ public class ItemManager {
     private static void createAcid() {
         ItemStack item = new ItemStack(Material.PAPER, 1);
         ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(Util.chat("&f&lACID"));
+        meta.setDisplayName(Util.chat("&E&lACID"));
         item.setItemMeta(meta);
         acid = item;
     }
@@ -77,7 +77,7 @@ public class ItemManager {
     private static void createMeth() {
         ItemStack item = new ItemStack(Material.QUARTZ, 1);
         ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(Util.chat("&f&lMeth"));
+        meta.setDisplayName(Util.chat("&b&lMeth"));
         item.setItemMeta(meta);
         meth = item;
     }
