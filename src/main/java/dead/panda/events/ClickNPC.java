@@ -37,63 +37,58 @@ public class ClickNPC implements Listener {
         int amountofcocaineFound = 0;
 
 
-        for (ItemStack drugs : drug) {
             for (ItemStack item : player.getInventory()) {
-                drugs.setAmount(1);
                 if (item != null && item.isSimilar(weed)) {
                     amountofweedFound += item.getAmount();
-                    drugs.setAmount(amountofweedFound);
-                    event.getPlayer().getInventory().removeItem(drugs).remove(drugs.getAmount());
+                    drug.get(0).setAmount(amountofweedFound);
+                    event.getPlayer().getInventory().removeItem(drug.get(0)).remove(drug.get(0).getAmount());
                     if (drug.get(0).getAmount() >= 1) {
                         drug.get(0).setAmount(1);
                     }
                 }
             }
-        }
-        for (ItemStack drugs : drug) {
             for (ItemStack item : player.getInventory()) {
                 if (item != null && item.isSimilar(acid)) {
                     amountofacidFound += item.getAmount();
-                    drugs.setAmount(amountofacidFound);
-                    event.getPlayer().getInventory().removeItem(drugs).remove(drugs.getAmount());
+                    drug.get(4).setAmount(amountofacidFound);
+                    event.getPlayer().getInventory().removeItem(drug.get(4)).remove(drug.get(4).getAmount());
                     if (drug.get(4).getAmount() >= 1) {
                         drug.get(4).setAmount(1);
                     }
                 }
                 if (item != null && item.isSimilar(heroin)) {
                     amountofheroinFound += item.getAmount();
-                    drugs.setAmount(amountofheroinFound);
-                    event.getPlayer().getInventory().removeItem(drugs).remove(drugs.getAmount());
+                    drug.get(1).setAmount(amountofheroinFound);
+                    event.getPlayer().getInventory().removeItem(drug.get(1)).remove(drug.get(1).getAmount());
                     if (drug.get(1).getAmount() >= 1) {
                         drug.get(1).setAmount(1);
                     }
                 }
                 if (item != null && item.isSimilar(mushroom)) {
                     amountofmushroomFound += item.getAmount();
-                    drugs.setAmount(amountofmushroomFound);
-                    event.getPlayer().getInventory().removeItem(drugs).remove(drugs.getAmount());
+                    drug.get(2).setAmount(amountofmushroomFound);
+                    event.getPlayer().getInventory().removeItem(drug.get(2)).remove(drug.get(2).getAmount());
                     if (drug.get(2).getAmount() >= 1) {
                         drug.get(2).setAmount(1);
                     }
                 }
                 if (item != null && item.isSimilar(meth)) {
                     amountofmethFound += item.getAmount();
-                    drugs.setAmount(amountofmethFound);
-                    event.getPlayer().getInventory().removeItem(drugs).remove(drugs.getAmount());
+                    drug.get(3).setAmount(amountofmethFound);
+                    event.getPlayer().getInventory().removeItem(drug.get(3)).remove(drug.get(3).getAmount());
                     if (drug.get(3).getAmount() >= 1) {
                         drug.get(3).setAmount(1);
                     }
                 }
                 if (item != null && item.isSimilar(cocaine)) {
                     amountofcocaineFound += item.getAmount();
-                    drugs.setAmount(amountofcocaineFound);
-                    event.getPlayer().getInventory().removeItem(drugs).remove(drugs.getAmount());
+                    drug.get(5).setAmount(amountofcocaineFound);
+                    event.getPlayer().getInventory().removeItem(drug.get(5)).remove(drug.get(5).getAmount());
                     if (drug.get(5).getAmount() >= 1) {
                         drug.get(5).setAmount(1);
                     }
                 }
             }
-        }
         int total = amountofacidFound * 4 + amountofcocaineFound * 10 + amountofheroinFound * 8 + amountofmushroomFound * 15 + amountofweedFound * 2 + amountofmethFound * 8;
 
         player.sendMessage(Util.chat("&8&l--------- &a&lDrugs Sold &8&l---------"));
