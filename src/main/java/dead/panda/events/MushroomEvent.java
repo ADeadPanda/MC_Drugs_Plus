@@ -35,10 +35,6 @@ public class MushroomEvent implements Listener {
     @EventHandler
     public void onBreak(BlockBreakEvent e) {
 
-        if (e.getBlock().getType() == Material.BROWN_MUSHROOM) {
-            e.getBlock().getLocation().getWorld().dropItem(e.getBlock().getLocation(), mushroom);
-            e.setDropItems(false);
-        }
         if (e.getBlock().getType() == Material.RED_MUSHROOM) {
             e.getBlock().getLocation().getWorld().dropItem(e.getBlock().getLocation(), mushroom);
             e.setDropItems(false);

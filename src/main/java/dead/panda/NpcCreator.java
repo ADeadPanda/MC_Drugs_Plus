@@ -21,7 +21,7 @@ import java.util.UUID;
 
 public class NpcCreator {
 
-    private static final List<EntityPlayer> NPC = new ArrayList<>();
+    public static final List<EntityPlayer> NPC = new ArrayList<>();
 
     public static void createNPC(Player player, String skin) {
         MinecraftServer server = ((CraftServer) Bukkit.getServer()).getServer();
