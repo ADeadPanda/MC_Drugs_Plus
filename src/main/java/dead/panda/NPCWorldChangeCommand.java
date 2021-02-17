@@ -8,7 +8,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerChangedWorldEvent;
-import org.bukkit.event.player.PlayerTeleportEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,11 +33,12 @@ public class NPCWorldChangeCommand implements CommandExecutor, Listener {
 
         return false;
     }
+
     @EventHandler
-    public static void onPlayerTeleport(PlayerChangedWorldEvent event){
+    public static void onPlayerTeleport(PlayerChangedWorldEvent event) {
         Player player = (Player) event.getPlayer();
-        NpcCreator.addJoinPacket(player.getPlayer());
+        NpcCreator.addJoinPacket(player);
         PacketReader reader = new PacketReader();
-        reader.inject(player.getPlayer());
+        reader.inject(player);
     }
 }
